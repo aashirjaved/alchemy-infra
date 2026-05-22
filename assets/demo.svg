@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 480" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+  <defs>
+    <linearGradient id="termbg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0b0f14"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Window chrome -->
+  <rect width="880" height="480" rx="10" fill="url(#termbg)" stroke="#1f2937"/>
+  <rect width="880" height="32" rx="10" fill="#161b22"/>
+  <circle cx="20" cy="16" r="6" fill="#ff5f57"/>
+  <circle cx="42" cy="16" r="6" fill="#febc2e"/>
+  <circle cx="64" cy="16" r="6" fill="#28c840"/>
+  <text x="440" y="20" fill="#8b949e" font-size="12" text-anchor="middle" font-family="ui-sans-serif,-apple-system">~/repo · agent session</text>
+
+  <g font-size="13">
+    <!-- user prompt -->
+    <text x="20" y="64"  fill="#7ee787">$</text>
+    <text x="36" y="64"  fill="#e6edf3">"Set up Alchemy in this Next.js repo with a KV binding called CACHE"</text>
+
+    <!-- skill detects -->
+    <text x="20" y="96"  fill="#58a6ff">▸ setup-alchemy skill triggered</text>
+    <text x="20" y="116" fill="#8b949e">  Intake answered from prompt + repo probe</text>
+
+    <text x="20" y="148" fill="#c9d1d9">→ detected: Next.js 15, package manager = bun, framework = nextjs</text>
+    <text x="20" y="168" fill="#c9d1d9">→ adding deps: alchemy, @opennextjs/cloudflare</text>
+    <text x="20" y="188" fill="#c9d1d9">→ writing alchemy.run.ts (Nextjs + KVNamespace "CACHE")</text>
+    <text x="20" y="208" fill="#c9d1d9">→ writing open-next.config.ts</text>
+    <text x="20" y="228" fill="#c9d1d9">→ updating package.json scripts (preserved existing)</text>
+    <text x="20" y="248" fill="#c9d1d9">→ generating ALCHEMY_PASSWORD via openssl rand -base64 32</text>
+    <text x="20" y="268" fill="#c9d1d9">→ chmod 600 .env  ·  appended .env / .alchemy/ to .gitignore</text>
+    <text x="20" y="288" fill="#c9d1d9">→ writing .env.example (committable contract)</text>
+    <text x="20" y="308" fill="#c9d1d9">→ types/env.d.ts ← typeof website.Env</text>
+
+    <text x="20" y="340" fill="#34d399">✓ verified: tsc --noEmit clean</text>
+    <text x="20" y="360" fill="#34d399">✓ no secrets staged · gitignore audit passed</text>
+
+    <text x="20" y="396" fill="#f0f6fc" font-weight="700">Next steps:</text>
+    <text x="20" y="416" fill="#c9d1d9">  CLOUDFLARE_API_TOKEN=… in .env</text>
+    <text x="20" y="436" fill="#c9d1d9">  bun install &amp;&amp; bun deploy</text>
+    <text x="20" y="456" fill="#7ee787">$ _</text>
+  </g>
+</svg>

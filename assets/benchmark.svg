@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 460" font-family="ui-sans-serif,-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <rect width="880" height="460" fill="#0d1117"/>
+  <text x="40" y="44" fill="#f0f6fc" font-size="22" font-weight="700">setup-alchemy benchmark — iteration 1</text>
+  <text x="40" y="68" fill="#8b949e" font-size="13">3 real-world scenarios · 32 assertions · 6 sub-agent runs</text>
+
+  <!-- Aggregate bars -->
+  <g transform="translate(40,110)">
+    <text x="0" y="-6" fill="#c9d1d9" font-size="14" font-weight="600">Aggregate pass rate</text>
+
+    <!-- with skill -->
+    <text x="0" y="30" fill="#c9d1d9" font-size="13">with-skill</text>
+    <rect x="120" y="14" width="600" height="22" fill="#161b22" stroke="#21262d"/>
+    <rect x="120" y="14" width="600" height="22" fill="url(#g1)" filter="url(#shadow)"/>
+    <text x="730" y="30" fill="#34d399" font-size="14" font-weight="700">100% (32/32)</text>
+
+    <!-- baseline -->
+    <text x="0" y="68" fill="#c9d1d9" font-size="13">baseline</text>
+    <rect x="120" y="52" width="600" height="22" fill="#161b22" stroke="#21262d"/>
+    <rect x="120" y="52" width="507" height="22" fill="url(#g2)" filter="url(#shadow)"/>
+    <text x="730" y="68" fill="#cbd5e1" font-size="14" font-weight="700">84.5% (27/32)</text>
+  </g>
+
+  <!-- Per-eval -->
+  <g transform="translate(40,220)">
+    <text x="0" y="-6" fill="#c9d1d9" font-size="14" font-weight="600">Per-eval breakdown</text>
+    <line x1="0" y1="6" x2="800" y2="6" stroke="#21262d"/>
+
+    <g font-size="12" fill="#c9d1d9">
+      <!-- header -->
+      <text x="0"   y="30" font-weight="600">Scenario</text>
+      <text x="380" y="30" font-weight="600" text-anchor="middle">with-skill</text>
+      <text x="540" y="30" font-weight="600" text-anchor="middle">baseline</text>
+      <text x="700" y="30" font-weight="600" text-anchor="middle">delta</text>
+
+      <line x1="0" y1="40" x2="800" y2="40" stroke="#21262d"/>
+
+      <!-- row 1 -->
+      <text x="0"   y="64">CF Worker + KV (new project)</text>
+      <text x="380" y="64" fill="#34d399" text-anchor="middle">11/11 ✓</text>
+      <text x="540" y="64" fill="#94a3b8" text-anchor="middle">10/11</text>
+      <text x="700" y="64" fill="#34d399" text-anchor="middle">+1</text>
+
+      <line x1="0" y1="76" x2="800" y2="76" stroke="#161b22"/>
+
+      <!-- row 2 -->
+      <text x="0"   y="100">Next.js → Cloudflare (existing app)</text>
+      <text x="380" y="100" fill="#34d399" text-anchor="middle">11/11 ✓</text>
+      <text x="540" y="100" fill="#94a3b8" text-anchor="middle">8/11</text>
+      <text x="700" y="100" fill="#34d399" text-anchor="middle">+3</text>
+
+      <line x1="0" y1="112" x2="800" y2="112" stroke="#161b22"/>
+
+      <!-- row 3 -->
+      <text x="0"   y="136">AWS Lambda + DDB (SSO, strict security)</text>
+      <text x="380" y="136" fill="#34d399" text-anchor="middle">10/10 ✓</text>
+      <text x="540" y="136" fill="#94a3b8" text-anchor="middle">9/10</text>
+      <text x="700" y="136" fill="#34d399" text-anchor="middle">+1</text>
+    </g>
+  </g>
+
+  <!-- footer note -->
+  <g transform="translate(40,400)">
+    <rect x="0" y="0" width="800" height="40" rx="6" fill="#0f1721" stroke="#1f2937"/>
+    <text x="14" y="25" fill="#94a3b8" font-size="12">
+      Baselines missed: ALCHEMY_PASSWORD generation, .gitignore hygiene, AWS SSO instructions.
+      Skill: +15.5pp pass rate. Trade-off: ~67% more tokens for production-ready output.
+    </text>
+  </g>
+</svg>

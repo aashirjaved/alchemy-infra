@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 220" font-family="ui-sans-serif,-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
+  <rect width="880" height="220" fill="#0d1117"/>
+  <text x="40" y="36" fill="#f0f6fc" font-size="18" font-weight="700">10-step setup flow</text>
+
+  <g font-size="12" fill="#c9d1d9">
+    <g transform="translate(20,70)">
+      <!-- 5 boxes top row -->
+      <g>
+        <rect x="0"   y="0" width="155" height="56" rx="6" fill="#161b22" stroke="#30363d"/>
+        <text x="10" y="22" fill="#58a6ff" font-weight="700">1 · Intake</text>
+        <text x="10" y="42">Ask 8 questions</text>
+      </g>
+      <g transform="translate(170,0)">
+        <rect x="0" y="0" width="155" height="56" rx="6" fill="#161b22" stroke="#30363d"/>
+        <text x="10" y="22" fill="#58a6ff" font-weight="700">2 · Detect</text>
+        <text x="10" y="42">Probe repo state</text>
+      </g>
+      <g transform="translate(340,0)">
+        <rect x="0" y="0" width="155" height="56" rx="6" fill="#161b22" stroke="#30363d"/>
+        <text x="10" y="22" fill="#58a6ff" font-weight="700">3 · Install</text>
+        <text x="10" y="42">create / init / add</text>
+      </g>
+      <g transform="translate(510,0)">
+        <rect x="0" y="0" width="155" height="56" rx="6" fill="#161b22" stroke="#30363d"/>
+        <text x="10" y="22" fill="#58a6ff" font-weight="700">4 · Write</text>
+        <text x="10" y="42">alchemy.run.ts</text>
+      </g>
+      <g transform="translate(680,0)">
+        <rect x="0" y="0" width="155" height="56" rx="6" fill="#34d39922" stroke="#34d399"/>
+        <text x="10" y="22" fill="#34d399" font-weight="700">5 · Security</text>
+        <text x="10" y="42">Password + .env</text>
+      </g>
+    </g>
+
+    <g transform="translate(20,148)">
+      <g>
+        <rect x="0" y="0" width="155" height="56" rx="6" fill="#161b22" stroke="#30363d"/>
+        <text x="10" y="22" fill="#58a6ff" font-weight="700">6 · State</text>
+        <text x="10" y="42">FS/CF/S3/SQLite</text>
+      </g>
+      <g transform="translate(170,0)">
+        <rect x="0" y="0" width="155" height="56" rx="6" fill="#161b22" stroke="#30363d"/>
+        <text x="10" y="22" fill="#58a6ff" font-weight="700">7 · Auth</text>
+        <text x="10" y="42">OAuth/Token/SSO</text>
+      </g>
+      <g transform="translate(340,0)">
+        <rect x="0" y="0" width="155" height="56" rx="6" fill="#161b22" stroke="#30363d"/>
+        <text x="10" y="22" fill="#58a6ff" font-weight="700">8 · Framework</text>
+        <text x="10" y="42">Adapter wiring</text>
+      </g>
+      <g transform="translate(510,0)">
+        <rect x="0" y="0" width="155" height="56" rx="6" fill="#161b22" stroke="#30363d"/>
+        <text x="10" y="22" fill="#58a6ff" font-weight="700">9 · Verify</text>
+        <text x="10" y="42">tsc + run dry</text>
+      </g>
+      <g transform="translate(680,0)">
+        <rect x="0" y="0" width="155" height="56" rx="6" fill="#161b22" stroke="#30363d"/>
+        <text x="10" y="22" fill="#58a6ff" font-weight="700">10 · CI/CD</text>
+        <text x="10" y="42">GH Actions (opt)</text>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,40 @@
+{
+  "name": "alchemy-infra",
+  "version": "0.1.0",
+  "description": "Claude/agent skill that scaffolds Alchemy (Infrastructure-as-TypeScript) into any codebase with strict secret hygiene.",
+  "keywords": [
+    "claude",
+    "claude-code",
+    "skill",
+    "alchemy",
+    "infrastructure-as-code",
+    "iac",
+    "typescript",
+    "cloudflare",
+    "aws",
+    "workers"
+  ],
+  "homepage": "https://github.com/aashirjaved/alchemy-infra",
+  "license": "MIT",
+  "author": "aashirjaved",
+  "bin": {
+    "alchemy-infra": "./bin/install.js"
+  },
+  "files": [
+    "SKILL.md",
+    "README.md",
+    "LICENSE",
+    "bin/",
+    "references/",
+    "scripts/",
+    "evals/",
+    "assets/"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aashirjaved/alchemy-infra.git"
+  }
+}

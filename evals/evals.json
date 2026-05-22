@@ -1,0 +1,26 @@
+{
+  "skill_name": "setup-alchemy",
+  "evals": [
+    {
+      "id": 0,
+      "name": "new-cloudflare-worker-with-kv",
+      "prompt": "I want to deploy a Cloudflare Worker that uses a KV namespace for caching. Set up Alchemy in an empty directory called my-worker. Use Bun. I'll use a CF API token I'll add later.",
+      "expected_output": "Scaffolded project: package.json with alchemy dep + scripts, alchemy.run.ts that awaits a Worker with a KV binding, src/worker.ts hello-world, .env.example listing required vars, .gitignore with .env/.alchemy/.wrangler entries, ALCHEMY_PASSWORD generated into .env, no secrets committed or inlined.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "add-to-existing-nextjs",
+      "prompt": "I have a Next.js 15 app at the repo root and I want to switch from Vercel to Cloudflare via Alchemy. Wire it up so I can deploy with `bun deploy`. I want a KV binding called CACHE.",
+      "expected_output": "Installs alchemy + @opennextjs/cloudflare, writes alchemy.run.ts with Nextjs() resource and KV binding, adds open-next.config.ts, updates package.json scripts (deploy/destroy/dev), updates .gitignore, generates ALCHEMY_PASSWORD, does NOT overwrite existing next.config.js values, warns about vercel.json if present.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "aws-lambda-ddb-strict-security",
+      "prompt": "Set up Alchemy to manage an AWS Lambda function backed by a DynamoDB table. I will use AWS SSO via my local profile 'dev-acct'. Make sure no AWS keys end up in the repo. The app name is order-service.",
+      "expected_output": "alchemy.run.ts with Role + Table + Function resources, uses environment variables sourced from AWS profile (no inline keys), .env.example mentions AWS_PROFILE=dev-acct only, .gitignore covers secrets, ALCHEMY_PASSWORD generated, README or printed instructions explain `aws sso login --profile dev-acct` before deploy, refuses to write any AWS credential into any committed file.",
+      "files": []
+    }
+  ]
+}
