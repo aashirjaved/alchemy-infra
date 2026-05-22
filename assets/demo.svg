@@ -20,7 +20,7 @@
     <text x="36" y="64"  fill="#e6edf3">"Set up Alchemy in this Next.js repo with a KV binding called CACHE"</text>
 
     <!-- skill detects -->
-    <text x="20" y="96"  fill="#58a6ff">▸ setup-alchemy skill triggered</text>
+    <text x="20" y="96"  fill="#58a6ff">▸ alchemy-infra skill triggered</text>
     <text x="20" y="116" fill="#8b949e">  Intake answered from prompt + repo probe</text>
 
     <text x="20" y="148" fill="#c9d1d9">→ detected: Next.js 15, package manager = bun, framework = nextjs</text>
