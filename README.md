@@ -22,17 +22,75 @@ The drop-in skill that lets any AI agent stand up real cloud infrastructure — 
 
 ## Why this exists
 
-**The problem with cloud infra is the UI.** Spinning up a Worker, wiring a KV namespace, configuring a DynamoDB table, attaching an IAM role — every provider buries these behind a dashboard with 40 clicks, a dozen confirmation modals, and copy-pasted IDs that drift the moment a teammate touches them. Agents can't click. Humans don't want to.
+> **TL;DR** — Cloud UIs are click-prisons. Alchemy escapes them with TypeScript. But Alchemy itself takes 30+ correct decisions to set up safely. This skill encodes those decisions so any agent ships in one prompt.
 
-**[Alchemy](https://github.com/alchemy-run/alchemy) closes that gap with Infrastructure-as-TypeScript.** Every resource is an `await` away — pure TS, no DSL, no YAML, no codegen. It's the cleanest IaC story in the ecosystem.
+### The pipeline
 
-**But Alchemy itself is non-trivial to set up.** First-time users (human or agent) hit 30+ decisions in the first hour: which template, where `alchemy.run.ts` lives, how bindings are typed per framework, how `ALCHEMY_PASSWORD` is generated (and what catastrophe follows if you lose it), what belongs in `.gitignore`, how CI computes the stage name, how to switch state backends, how AWS SSO interacts with token resolution. Get any one wrong and you ship a token to GitHub or an orphaned resource to your cloud bill.
+```
+  🖱️  Cloud UIs  ──▶   📜  Alchemy (IaC-as-TS)  ──▶   🤖  alchemy-infra
+  click-prison         escapes the UI                  makes setup safe
+  agents can't use     but setup is 30+ decisions       for any agent
+```
 
-**Agents make this worse before they make it better.** A naive agent will happily inline a secret, skip `app.finalize()`, forget to gitignore `.env`, or commit `.alchemy/` state to a public repo. The benchmark below shows baseline agents fail roughly 1-in-6 production-readiness checks.
+### Stage by stage
 
-**`alchemy-infra` is the bridge.** It encodes the playbook the Alchemy core team would write themselves — intake questions, security invariants, framework adapters, state-backend selection — so any SKILL.md-aware agent (Claude Code, Cursor, Aider, Cline, Codex, custom GPTs) can scaffold a deployable Alchemy project in one prompt without ever touching a cloud console.
+<table>
+<tr>
+<td width="33%" valign="top">
 
-> **One sentence:** point any agent at a repo, type *"set up Alchemy with a KV-backed Worker"*, walk away with a deployable project — passwords generated, gitignore enforced, types wired, scripts ready.
+#### 🖱️ Cloud UIs — broken for agents
+
+- 40 clicks per resource
+- Dashboard drift on team edits
+- Copy-pasted IDs go stale
+- Agents physically can't navigate
+- Humans don't want to
+
+</td>
+<td width="33%" valign="top">
+
+#### 📜 Alchemy — fixes that
+
+- Pure TypeScript, no DSL
+- Resources are `await`-ed
+- No YAML, no codegen
+- Same file = source of truth
+- *Cleanest IaC story today*
+
+</td>
+<td width="33%" valign="top">
+
+#### 🤖 …but setup is a minefield
+
+- Template? PM? File layout?
+- Bindings per framework?
+- `ALCHEMY_PASSWORD` rotation?
+- `.gitignore` coverage?
+- CI stage naming, state backend, SSO…
+
+</td>
+</tr>
+</table>
+
+### Where naive agents fail
+
+| Footgun | Consequence | Baseline rate |
+|---|---|---:|
+| Inline a secret in `alchemy.run.ts` | Token shipped to GitHub | common |
+| Skip `await app.finalize()` | Orphan resources, surprise bill | common |
+| Forget to gitignore `.env` / `.alchemy/` | Secrets in git history | **3/3 baselines** |
+| No `ALCHEMY_PASSWORD` generated | Future encryption silently breaks | **3/3 baselines** |
+| Miss AWS SSO instructions | Opaque "credentials not found" at deploy | **1/1 AWS baseline** |
+
+> Result: baseline agents fail **15.5 percentage points** of production-readiness checks. See [§ Benchmark](#-benchmark).
+
+### What this skill is
+
+**`alchemy-infra` = the playbook the Alchemy core team would write for agents.**
+
+It encodes intake questions, security invariants, framework adapters, and state-backend selection into a single `SKILL.md`. Any SKILL.md-aware agent — Claude Code, Cursor, Aider, Cline, Codex, custom GPTs — reads it once and scaffolds production-ready Alchemy projects without ever touching a cloud console.
+
+> **One prompt → deployable project.** Passwords generated, gitignore enforced, types wired, scripts ready.
 
 ---
 
