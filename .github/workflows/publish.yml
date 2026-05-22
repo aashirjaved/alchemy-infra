@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: npm
-      url: https://www.npmjs.com/package/alchemy-infra
+      url: https://www.npmjs.com/package/@aashirjaved/alchemy-infra
     steps:
       - uses: actions/checkout@v4
 
