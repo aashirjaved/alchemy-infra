@@ -2,7 +2,9 @@
 
 # alchemy-infra
 
-**The drop-in agent skill that scaffolds [Alchemy](https://github.com/alchemy-run/alchemy) into any codebase — correctly, securely, in one prompt.**
+**Infrastructure-as-Code for agents. No dashboards, no clicking, no leaked secrets.**
+
+The drop-in skill that lets any AI agent stand up real cloud infrastructure — Cloudflare Workers, KV, R2, D1, Queues, Durable Objects, AWS Lambda, DynamoDB — by writing TypeScript instead of navigating a UI.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Pass rate](https://img.shields.io/badge/benchmark-100%25-brightgreen.svg)](#-benchmark)
@@ -20,17 +22,17 @@
 
 ## Why this exists
 
-Alchemy is wonderful, but every new agent rediscovers the same 30 pieces of glue on every project:
+**The problem with cloud infra is the UI.** Spinning up a Worker, wiring a KV namespace, configuring a DynamoDB table, attaching an IAM role — every provider buries these behind a dashboard with 40 clicks, a dozen confirmation modals, and copy-pasted IDs that drift the moment a teammate touches them. Agents can't click. Humans don't want to.
 
-- Which template? Which package manager? Where does `alchemy.run.ts` live?
-- How are bindings *actually* typed in Next.js, in SvelteKit, in a bare Worker?
-- What needs to be in `.gitignore` so you don't ship secrets to GitHub?
-- How is `ALCHEMY_PASSWORD` generated and what happens if you lose it?
-- How does CI compute the stage name? What does the destroy job look like?
+**[Alchemy](https://github.com/alchemy-run/alchemy) closes that gap with Infrastructure-as-TypeScript.** Every resource is an `await` away — pure TS, no DSL, no YAML, no codegen. It's the cleanest IaC story in the ecosystem.
 
-This skill encodes the answers. Once installed, your agent stops guessing and starts shipping.
+**But Alchemy itself is non-trivial to set up.** First-time users (human or agent) hit 30+ decisions in the first hour: which template, where `alchemy.run.ts` lives, how bindings are typed per framework, how `ALCHEMY_PASSWORD` is generated (and what catastrophe follows if you lose it), what belongs in `.gitignore`, how CI computes the stage name, how to switch state backends, how AWS SSO interacts with token resolution. Get any one wrong and you ship a token to GitHub or an orphaned resource to your cloud bill.
 
-> **One sentence:** point any SKILL.md-aware agent at a repo, type *"set up Alchemy with a KV-backed Worker"*, and walk away with a deployable project — passwords generated, gitignore enforced, types wired, scripts ready.
+**Agents make this worse before they make it better.** A naive agent will happily inline a secret, skip `app.finalize()`, forget to gitignore `.env`, or commit `.alchemy/` state to a public repo. The benchmark below shows baseline agents fail roughly 1-in-6 production-readiness checks.
+
+**`alchemy-infra` is the bridge.** It encodes the playbook the Alchemy core team would write themselves — intake questions, security invariants, framework adapters, state-backend selection — so any SKILL.md-aware agent (Claude Code, Cursor, Aider, Cline, Codex, custom GPTs) can scaffold a deployable Alchemy project in one prompt without ever touching a cloud console.
+
+> **One sentence:** point any agent at a repo, type *"set up Alchemy with a KV-backed Worker"*, walk away with a deployable project — passwords generated, gitignore enforced, types wired, scripts ready.
 
 ---
 
